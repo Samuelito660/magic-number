@@ -5,80 +5,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        #guess{
+            width: 350px;
+            background-color: pink;
+        }
+    </style>
+
 </head>
 <body>
+
+    <header>
+        <h1>Indovina il numero</h1>
+    </header>
+
+    <div class="rules">
+        <p>
+            Devi indovinare il numero magico. Inserisci un numero e poi clicca sul pulsante
+        </p>
+    </div>
+
+
+    <div>
+        <form action="" method="get">
+            <input type="number" name="guess" id="guess" value="">
+            <input type="button" name="btn" id="guessBtn" value="Indovina">
+        </form>
+    </div>
+
+
     
     <script>
 
-function generateRandomInteger(min = 0 , max=100){
+    function generateRandomInteger(min = 0 , max=100){
 
-    let numero = Math.random()
-    numero = numero*(max - min + 1) + min
-    let intero = Math.floor(numero)
+        let numero = Math.random()
+        numero = numero*(max - min + 1) + min
+        let intero = Math.floor(numero)
 
-    return intero
-}
-
-
-function Sanitize(n) {
-    sanitizeN =parseInt(n.trim());
-  
-    return sanitizeN
-}
-
-
-let vericita=false
-let ntentativi=5
-
-const NumDaInd =generateRandomInteger();
-       
-       
-while (ntentativi > 0 && !vericita) {
-  
-    let numero=prompt("Inserisci un numero: ")
-    let num=Sanitize(numero)
-
-    if(isNaN(numero))
-    {
-      
-        console.log("Valore non valido")
-      numero=prompt("Inserisci un numero: ")
-      num = Sanitize(numero)
-      
+        return intero
     }
 
-    if(numero > NumDaInd)
-    {
-      
-        console.log("Il numero da indovinare è più piccolo ")
-        vericita=false
-        ntentativi = ntentativi - 1
-      
-    }else if(numero < NumDaInd)
-      
-    {
-      
-        console.log("Il numero da indovinare è più grande")
-        vericita=false
-        ntentativi = ntentativi - 1
-      
-    }
-  
-    else if(numero = NumDaInd)
-      
-    {
-      
-        console.log("Hai indovinato !!! ")
-        vericita=true
-      
-    }
-   
-  }
-         
-         console.log("Gioco concluso, il numero da indovinare era : " +NumDaInd)
 
- 
-    </script>
+    function Sanitize(n) {
+        sanitizeN =parseInt(n.trim());
+    
+        return sanitizeN
+    }
+
+
+    let vericita=false
+    let ntentativi=5
+
+    const NumDaInd =generateRandomInteger();
+        
+        
+    while (ntentativi > 0 && !vericita) {
+    
+        let numero=prompt("Inserisci un numero: ")
+        let num=Sanitize(numero)
+
+        if(isNaN(numero))
+        {
+        
+            console.log("Valore non valido")
+        numero=prompt("Inserisci un numero: ")
+        num = Sanitize(numero)
+        
+        }
+
+        if(numero > NumDaInd)
+        {
+        
+            console.log("Il numero da indovinare è più piccolo ")
+            vericita=false
+            ntentativi = ntentativi - 1
+        
+        }else if(numero < NumDaInd)
+        
+        {
+        
+            console.log("Il numero da indovinare è più grande")
+            vericita=false
+            ntentativi = ntentativi - 1
+        
+        }
+    
+        else if(numero = NumDaInd)
+        
+        {
+        
+            console.log("Hai indovinato !!! ")
+            vericita=true
+        
+        }
+    
+    }
+            
+            console.log("Gioco concluso, il numero da indovinare era : " +NumDaInd)
+
+    
+        </script>
     
   </body>
 </html>
