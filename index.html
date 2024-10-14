@@ -7,12 +7,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <style>
+     body{
+        background-color: aqua;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+     }
+
+     header{
+        font-family: serif;
+        font-weight: 200px;
+        color: blue;
+     }
+
+     
+     
+
+
+    </style>
+
 </head>
 
 <body>
 
     <header>
-        <h1>Indovina il numero</h1>
+        <h1>Indovina il numero!!!</h1>
     </header>
 
     <div class="rules">
@@ -88,11 +109,7 @@
     
             document.querySelector("#guess").value = ""
     
-            if (vericita === true) {
-
-                console.log("Hai indovinato il numero!")
-
-            } else if (ntentativi === 0) {
+            if (ntentativi === 0) {
 
                 console.log("Hai perso NABBO hai una L sulla fronte! Il numero da indovinare era: " + NumDaInd)
 
