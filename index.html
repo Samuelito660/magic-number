@@ -2,31 +2,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <style>
-
-        body{
-        background-color: aqua;
-        text-align: center;
-         }
-
-
-        header{
-            font-family: sans-serif;
-            font-weight: bold;
-
-        }
-
-        #guess{
-            width: 350px;
-            background-color: pink;
-        }
-    </style>
-
 </head>
+
 <body>
 
     <header>
@@ -35,26 +17,23 @@
 
     <div class="rules">
         <p>
-            
             Devi indovinare il numero magico. <br>
             Inserisci un numero e poi clicca sul pulsante
         </p>
     </div>
 
-
     <div>
         <form action="" method="get">
-            <input type="number" name="guess" id="guess" value="">
-            <input type="button" name="btn" id="guessBtn" value="Indovina">
+            <input type="number" name="guess" id="guess" value=""> 
+            <input type="button" name="btn" id="guessbtn" value="Indovina"> 
         </form>
     </div>
 
 
+    <script type="text/javascript">
     
-    <script>
-
-    function generateRandomInteger(min = 0 , max=100){
-
+        function generateRandomInteger(min = 0 , max=100){
+       
         let numero = Math.random()
         numero = numero*(max - min + 1) + min
         let intero = Math.floor(numero)
@@ -62,66 +41,63 @@
         return intero
     }
 
-
     function Sanitize(n) {
         sanitizeN =parseInt(n.trim());
     
         return sanitizeN
     }
-
-
-    let vericita=false
-    let ntentativi=5
-
-    const NumDaInd =generateRandomInteger();
-        
-        
-    while (ntentativi > 0 && !vericita) {
     
-        let numero=prompt("Inserisci un numero: ")
-        let num=Sanitize(numero)
+        let ntentativi = 5
+        let NumDaInd = generateRandomInteger(min = 0 , max=100)
+        let vericita  = false 
+    
+        let button = document.querySelector("#guessbtn")
+    
+        button.addEventListener("click", function (event) {
+            console.log(event)
+    
+            let numero = document.querySelector("#guess").value
+    
+            numero = Sanitize(numero)
+            console.log(numero)
+    
+            if (numero <= 0 || numero > 100 || isNaN(numero)) {
+                console.log("Inserire un numero valido tra 1 e 100")
+                return
+            }
+    
+            if(numero > NumDaInd){
 
-        if(isNaN(numero))
-        {
-        
-            console.log("Valore non valido")
-        numero=prompt("Inserisci un numero: ")
-        num = Sanitize(numero)
-        
-        }
-
-        if(numero > NumDaInd)
-        {
-        
             console.log("Il numero da indovinare è più piccolo ")
             vericita=false
             ntentativi = ntentativi - 1
-        
-        }else if(numero < NumDaInd)
-        
-        {
+
+            }else if(numero < NumDaInd){
         
             console.log("Il numero da indovinare è più grande")
             vericita=false
             ntentativi = ntentativi - 1
-        
-        }
-    
-        else if(numero = NumDaInd)
-        
-        {
+     
+            }else if(numero = NumDaInd){
         
             console.log("Hai indovinato !!! ")
             vericita=true
         
         }
     
-    }
-            
-            console.log("Gioco concluso, il numero da indovinare era : " +NumDaInd)
+    
+            document.querySelector("#guess").value = ""
+    
+            if (vericita === true) {
 
-    
-        </script>
-    
-  </body>
+                console.log("Hai indovinato il numero!")
+
+            } else if (ntentativi === 0) {
+
+                console.log("Hai perso NABBO hai una L sulla fronte! Il numero da indovinare era: " + NumDaInd)
+
+            }
+        })
+    </script>
+</body>
 </html>
