@@ -7,27 +7,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <link  rel="stylesheet" href="static/css/commons.css">
+
+    
+
+
     <style>
      body{
-        background-color: aqua;
+        background-color: #CCFFC5;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        
      }
 
-     header{
-        font-family: serif;
-        font-weight: 200px;
-        color: blue;
+     header h1{
+        font-family: "Inter", sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 50px;
+        line-height: 61px;
+        display: flex;
+        align-items: center;
+     }
+
+     .rules{
+        font-family: "Inter", sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        display: flex;
+        align-items: center;
+     }
+
+     p{
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        display: flex;
+        align-items: center;
+     }
+
+    
+     #guessbtn{
+        
+        
+        background: #3AE3A8;
+        border-radius: 5px;
+     }
+    
+     .avvisi{
+    
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        display: flex;
+        align-items: center;
+        text-align: center;
      }
 
      
-     
-
 
     </style>
-
+ 
 </head>
 
 <body>
@@ -37,17 +85,43 @@
     </header>
 
     <div class="rules">
+
+        <ol>
+            <li>Il computer sceglierà segretamente un numero intero casuale tra 1 e 100.</li>
+            <li>Il tuo obiettivo è indovinare questo numero segreto nel minor numero di tentativi possibile.</li>
+            <li>Ad ogni tentativo, inserisci un numero e il computer ti darà un indizio:</li>
+        </ol>
+
+        <ul>
+            <li>Se il tuo numero è troppo basso, ti dirà "Troppo basso, prova un numero più alto!"</li>
+            <li>Se il tuo numero è troppo alto, ti dirà "Troppo alto, prova un numero più basso!"</li>
+            <li>Se indovini il numero esatto, vincerai la partita!</li>
+        </ul>
+
+        <ol>
+            <li>Continua a fare tentativi finché non indovini il numero magico.</li>
+            <li>Alla fine del gioco, ti verrà mostrato il numero di tentativi che hai impiegato per indovinare.</li>
+            <li>Sfida te stesso a indovinare il numero con il minor numero di tentativi possibile!</li>
+        </ol>
+        
+    </div>
+    
+    <div>
         <p>
-            Devi indovinare il numero magico. <br>
-            Inserisci un numero e poi clicca sul pulsante
+            inserisci il numero magico
         </p>
     </div>
 
     <div>
+
         <form action="" method="get">
             <input type="number" name="guess" id="guess" value=""> 
             <input type="button" name="btn" id="guessbtn" value="Indovina"> 
         </form>
+    </div>
+
+    <div class = "avvisi">
+
     </div>
 
 
@@ -67,7 +141,7 @@
     
         return sanitizeN
     }
-    
+        let avvisi = document.querySelector("#avvisi")
         let ntentativi = 5
         let NumDaInd = generateRandomInteger(min = 0 , max=100)
         let vericita  = false 
@@ -83,25 +157,25 @@
             console.log(numero)
     
             if (numero <= 0 || numero > 100 || isNaN(numero)) {
-                console.log("Inserire un numero valido tra 1 e 100")
+                avvisi.innerHTML = 'Inserire un numero valido tra 1 e 100'
                 return
             }
     
             if(numero > NumDaInd){
 
-            console.log("Il numero da indovinare è più piccolo ")
+            avvisi.innerHTML = 'Il numero da indovinare è più piccolo '
             vericita=false
             ntentativi = ntentativi - 1
 
             }else if(numero < NumDaInd){
         
-            console.log("Il numero da indovinare è più grande")
+            avvisi.innerHTML = 'Il numero da indovinare è più grande'
             vericita=false
             ntentativi = ntentativi - 1
      
             }else if(numero = NumDaInd){
         
-            console.log("Hai indovinato !!! ")
+            avvisi.innerHTML = 'Hai indovinato !!! '
             vericita=true
         
         }
@@ -111,7 +185,7 @@
     
             if (ntentativi === 0) {
 
-                console.log("Hai perso NABBO hai una L sulla fronte! Il numero da indovinare era: " + NumDaInd)
+                avvisi.innerHTML = ("Hai perso NABBO hai una L sulla fronte! Il numero da indovinare era: " + NumDaInd)
 
             }
         })
