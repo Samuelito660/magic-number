@@ -20,7 +20,7 @@ function Sanitize(numero) {
 
         
 function numerimagici(event){
-
+    
     let avvisi = document.querySelector("#guess").value
 
     num = Sanitize(avvisi) ;
@@ -51,15 +51,26 @@ function numerimagici(event){
     text3.innerHTML = "Hai utilizato <strong>" + (6-ntentativi) + "</strong> tentativi"
     }
 
+    if(ntentativi < 3){
+        el.classList.remove("greenBg")
+        el.classList.add("yellowBg")
+
+        bottone.classList.remove("greenbtn")
+        bottone.classList.add("purplebtn")
+    }
+
     if (ntentativi === 0 && !vericita) {
 
         text2.innerHTML = 'Hai esaurito i tentativi'
-        text3.innerHTML = "Il numero da indovinare era <strong>" + NumDaInd + "</strong>"
+        text3.innerHTML = "Il numero da indovinare era <strong>" + NumDaInd + "</strong>" ;
+        el.classList.remove("yellowBg")
+        el.classList.add("redBg")
 
-    }
+        bottone.classList.remove("purplebtn")
+        bottone.classList.add("brownbtn")
 
 }
-
+}
         
     let ntentativi = 5
     let NumDaInd = generateRandomInteger(min = 0 , max=100)
@@ -67,8 +78,9 @@ function numerimagici(event){
     let vericita  = false
     let text2 = document.querySelector("#testo2")
     let text3 = document.querySelector("#testo3")
+    let el = document.querySelector("#Bg")
+    let bottone = document.querySelector("#guessbtn")
 
-    
     console.log("WEEEEELCOMEE TOOOOO NUMERI MAGICI")
 
     let btn = document.querySelector("#guessbtn")

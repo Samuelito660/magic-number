@@ -15,8 +15,28 @@
 
     <style>
 
-    body{
+    .greenBg{
         background-color: #ccffc5;
+    }
+
+    .yellowBg{
+        background-color: yellow;
+    }
+
+    .redBg{
+        background-color: red;
+    }
+
+    .greenbtn{
+    background-color: #3ae3a8;
+    }
+
+    .purplebtn{
+        background-color: purple;
+    }
+
+    .brownbtn{
+        background-color: seashell;
     }
 
 
@@ -41,13 +61,16 @@
         margin-bottom: 0px;
      }
 
+     .transition{
+        transition: all 4s;
+     }
      
 
     </style>
  
 </head>
 
-<body>
+<body id ="Bg" class ="greenBg transition">
 <section class ="hero">
     <header>
         <h2>Indovina il numero!!!</h2>
@@ -85,7 +108,7 @@
 
         <form action="" method="get">
             <input type="number" name="guess" id="guess" value=""> <br>
-            <input type="button" name="btn" id="guessbtn" value="Indovina"> 
+            <input type="button" name="btn" id="guessbtn" value="Indovina" class="greenbtn transition"> 
         </form>
     </div>
 

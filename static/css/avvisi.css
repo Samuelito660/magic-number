@@ -32,7 +32,6 @@
 }
 
 #guessbtn{
-    background-color: #3ae3a8;
     font-family: "Inter", "sans-serif";
     border-radius: 5px;
     border-style: hidden;
@@ -44,4 +43,8 @@
     height: 60px;
     width: 350px;
 
+}
+
+.button{
+    background-color: #3ae3a8;
 }
